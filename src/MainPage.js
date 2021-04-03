@@ -4,7 +4,10 @@ import axios from "axios";
 import {ReactSpinner} from 'react-spinning-wheel';
 import 'react-spinning-wheel/dist/style.css';
 
-import {Button } from 'react-bootstrap'
+import { Link} from 'react-router-dom';
+
+import {Button, Card, Form, Row, Container, Col } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import mountainNames from './MountainNames';
 
@@ -39,9 +42,27 @@ const MainPage = () => {
             {gettingLocation && <ReactSpinner />}
             <Button onClick={()=>getUserLocation()}>Sort by distance</Button>
             <Button onClick={()=>setSortByDist(false)}>Sort by name</Button>
-            {mtnNames.map((mtn, i) => (
-                <h5>{mtn["display name"]}</h5>
-            ))}
+
+            <Card style={{ width: '100%', marginTop: '2%'}}>
+                <Card.Body>
+                    <Container>
+                        {mtnNames.map((mtn, i) => (
+                            <Link to={"/"+mtn["name"]} style={{textDecoration: "none", color: "black"}}>
+                                <Row>
+                                    <Col>
+                                        {mtn["display name"]}
+                                    </Col>
+                                    <Col>
+                                    testing
+                                    </Col>
+                                </Row>
+                            </Link>
+                        ))}
+                    </Container>
+                </Card.Body>
+            </Card>
+
+            
         </div>
     );
 
@@ -101,9 +122,6 @@ const MainPage = () => {
         userLocation.lng = crd.longitude;
         setSortByDist(true);
         setGettingLocation(false);
-
-
-
     }
     
     function errors(err) {
