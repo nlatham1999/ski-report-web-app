@@ -18,8 +18,8 @@ const MainPage = () => {
     const [userLocation, setUserLocation] = useState({"lat": 0, "lng": 0})
     const [sortByDist, setSortByDist] = useState(false);
     const [gettingLocation, setGettingLocation] = useState(false);
-
-
+    const [weatherData, setWeatherData] = useState({});
+    const [refresh, setRefresh] = useState(false);
 
     
     var locationOptions = {
@@ -29,6 +29,7 @@ const MainPage = () => {
     };
     
     useEffect(() => {
+        getWeather();
     }, [])
 
     if(sortByDist){
@@ -39,28 +40,43 @@ const MainPage = () => {
 
     return (
         <div>
-            {gettingLocation && <ReactSpinner />}
-            <Button onClick={()=>getUserLocation()}>Sort by distance</Button>
-            <Button onClick={()=>setSortByDist(false)}>Sort by name</Button>
+            {/* {gettingLocation && <ReactSpinner />} */}
 
-            <Card style={{ width: '100%', marginTop: '2%'}}>
-                <Card.Body>
-                    <Container>
-                        {mtnNames.map((mtn, i) => (
-                            <Link to={"/"+mtn["name"]} style={{textDecoration: "none", color: "black"}}>
-                                <Row>
-                                    <Col>
-                                        {mtn["display name"]}
-                                    </Col>
-                                    <Col>
-                                    testing
-                                    </Col>
-                                </Row>
-                            </Link>
-                        ))}
-                    </Container>
-                </Card.Body>
-            </Card>
+            <Container>
+                <Button 
+                    onClick={()=>getUserLocation()} 
+                    style={{marginTop: "1%"}}
+                    disabled={gettingLocation}
+                    variant= {sortByDist || gettingLocation ? "dark" : "light"}
+                >
+                    {gettingLocation ? 'Loading…' : 'Sort by Distance'}
+                </Button>
+                <Button 
+                    onClick={()=>setSortByDist(false)} 
+                    style={{marginTop: "1%", marginLeft: "1%"}}
+                    disabled={gettingLocation}
+                    variant= {!sortByDist && !gettingLocation ? "dark" : "light"}
+                >
+                    Sort by name
+                </Button>
+                {mtnNames.map((mtn, i) => (
+                    <Link to={"/"+mtn["name"]} style={{textDecoration: "none", color: "black"}}>
+                        <Card style={{marginTop: "1%"}}>
+                            <Row style={{margin: "1%"}}>
+                                <Col>
+                                    {mtn["display name"]}
+                                </Col>
+                                <Col>
+                                    {weatherData[mtn.name] && weatherData[mtn.name].temperature + "ºF"}
+                                </Col>
+                                <Col>
+                                    {weatherData[mtn.name] && weatherData[mtn.name].shortForecast}
+                                </Col>
+                            </Row>
+                        </Card>
+                    </Link>
+                ))}
+            </Container>
 
             
         </div>
@@ -127,6 +143,38 @@ const MainPage = () => {
     function errors(err) {
         setGettingLocation(false);
         // console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
+
+    function getWeather(){
+        mtnNames.map((mtn, i) => (
+            getWeatherOfEach(mtn)    
+        ));
+    }
+
+    function getWeatherOfEach(mtn){
+        var url = "https://api.weather.gov/points/" + mtn["lat"] + "," + mtn["lng"];
+        console.log(mtn.name)
+        axios
+            .get(url, {
+                responseType: 'json',
+            })
+            .then(response => {
+                axios.get(response.data.properties.forecastHourly, {
+                    responseType: 'json',
+                })
+                .then(response2 =>{
+                    var data = {}
+                    data["temperature"] = response2.data.properties.periods[0].temperature;
+                    data["shortForecast"] = response2.data.properties.periods[0].shortForecast;
+                    console.log(data.temperature)
+                    var data2 = weatherData;
+                    data2[mtn.name] = data;
+                    setWeatherData(data2);
+                    setRefresh(true);
+                    setRefresh(false);
+
+                })
+        })
     }
 }
 

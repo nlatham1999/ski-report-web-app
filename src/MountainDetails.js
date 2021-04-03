@@ -5,6 +5,7 @@ import axios from "axios";
 const MountainDetails = ({mountain}) => {
 
     const [longerRange, setLongerRange] = useState([]);
+    const [hourly, setHourly] = useState([]);
 
     useEffect(() => {
         getWeather();
@@ -40,7 +41,7 @@ const MountainDetails = ({mountain}) => {
                     responseType: 'json',
                 })
                 .then(response2 =>{
-                    console.log(response2);
+                    setHourly(response2.data.properties.periods);
                 })
             })
     }
