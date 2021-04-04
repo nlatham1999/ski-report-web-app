@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
 
+import './MainPage.css'
+
 import {ReactSpinner} from 'react-spinning-wheel';
 import 'react-spinning-wheel/dist/style.css';
 
@@ -41,11 +43,11 @@ const MainPage = () => {
     return (
         <div>
             {/* {gettingLocation && <ReactSpinner />} */}
-
-            <Container>
+            <Container style={{position: "fixed", zIndex: 1, paddingBottom: "1%", top: 0, left: 0, right: 0, backgroundColor: "white", borderBottom: "1px solid"}}>
+                
                 <Button 
                     onClick={()=>getUserLocation()} 
-                    style={{marginTop: "1%"}}
+                    style={{marginTop: "1%", boxShadow: "0 1px 1px rgba(0,0,0,.06), 0 0px 0px rgba(0,0,0,.06)"}}
                     disabled={gettingLocation}
                     variant= {sortByDist || gettingLocation ? "dark" : "light"}
                 >
@@ -53,15 +55,20 @@ const MainPage = () => {
                 </Button>
                 <Button 
                     onClick={()=>setSortByDist(false)} 
-                    style={{marginTop: "1%", marginLeft: "1%"}}
+                    style={{marginTop: "1%", marginLeft: "1%", boxShadow: "0 1px 1px rgba(0,0,0,.06), 0 0px 0px rgba(0,0,0,.06)"}}
                     disabled={gettingLocation}
                     variant= {!sortByDist && !gettingLocation ? "dark" : "light"}
                 >
                     Sort by name
                 </Button>
+            </Container >
+            <Container style={{marginTop: "60px"}}>
                 {mtnNames.map((mtn, i) => (
                     <Link to={"/"+mtn["name"]} style={{textDecoration: "none", color: "black"}}>
-                        <Card style={{marginTop: "1%"}}>
+                        <Card 
+                            className="customCard"
+                            style={{marginTop: "1%", marginBottom: "1%", boxShadow: "0 1px 1px rgba(0,0,0,.06), 0 0px 0px rgba(0,0,0,.06)"}}
+                        >
                             <Row style={{margin: "1%"}}>
                                 <Col>
                                     {mtn["display name"]}
