@@ -62,7 +62,7 @@ const MainPage = () => {
                     Sort by name
                 </Button>
             </Container >
-            <Container style={{marginTop: "60px"}}>
+            <Container style={{marginTop: "70px"}}>
                 {mtnNames.map((mtn, i) => (
                     <Link to={"/"+mtn["name"]} style={{textDecoration: "none", color: "black"}}>
                         <Card 

@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
+import { Container, Col, Row, Card } from 'react-bootstrap';
+
+import './MountainDetails.css'
 
 
 const MountainDetails = ({mountain}) => {
@@ -12,14 +15,77 @@ const MountainDetails = ({mountain}) => {
       }, [])
 
     return (
+
         <div>
-            <div>Mountain Details {mountain["name"]}</div>
-            {longerRange.map((forecast, i) => (
-                <div>
-                    <h6>{forecast["name"]}</h6>
-                    <p>{forecast["detailedForecast"]}</p>
-                </div>
-            ))}
+            <Container style={{marginTop: "1%"}}>
+                <Card>
+                    <Card.Header>
+                        {mountain["display name"]}
+                    </Card.Header>
+                </Card>
+            </Container>
+            <Container style={{marginTop: "1%"}}>
+                <Card>
+                    <Card.Header>
+                        Forecast
+                    </Card.Header>
+                        < div
+                            className="horizontalScrollDisplay"
+                            style={{overflowX: "scroll", scrollbarWidth: "none", overflowY: "hidden", whiteSpace: "nowrap", left: "0", right: "0"}}
+                        >
+                            {longerRange.map((forecast, i) => (
+                                    <Card style={{display: "inline-block", width: "55vmin", marginLeft: "1%", marginTop: "1%", marginBottom: "1%", paddingTop: "0", top: "0"}}>
+                                        <Card.Header>
+                                            {forecast["name"]}
+                                        </Card.Header>
+                                        <Card.Body style={{height: "30%", whiteSpace: "pre-wrap"}}>
+                                            <div>   
+                                                {forecast["temperature"] + " ºF"}
+                                            </div>
+                                            <div>
+                                                {forecast["windSpeed"] + " @ " + forecast["windDirection"]}
+                                            </div>
+                                            <div style={{whiteSpace: "pre"}}>   
+                                                {forecast["shortForecast"]}
+                                            </div>
+                                        </Card.Body>
+                                    </Card>
+                            ))}
+                        </div>
+                </Card>
+            </Container>
+            <Container style={{marginTop: "1%"}}>
+                <Card>
+                    <Card.Header>
+                        Hourly Forecast
+                    </Card.Header>
+                        < div
+                            className="horizontalScrollDisplay"
+                            style={{overflowX: "scroll", scrollbarWidth: "none", overflowY: "hidden", whiteSpace: "nowrap", left: "0", right: "0"}}
+                        >
+                            {hourly.map((forecast, i) => (
+                                    <Card style={{display: "inline-block", width: "55vmin", marginLeft: "1%", marginTop: "1%", marginBottom: "1%", paddingTop: "0", top: "0"}}>
+                                        <Card.Header style={{whiteSpace: "break-spaces"}}>
+                                            {getTime(forecast)}
+                                        </Card.Header>
+                                        <Card.Body style={{height: "30%", whiteSpace: "pre-wrap"}}>
+                                            <div>   
+                                                {forecast["temperature"] + " ºF"}
+                                            </div>
+                                            <div>
+                                                {forecast["windSpeed"] + " @ " + forecast["windDirection"]}
+                                            </div>
+                                            <div style={{whiteSpace: "pre"}}>   
+                                                {forecast["shortForecast"]}
+                                            </div>
+                                        </Card.Body>
+                                    </Card>
+                            ))}
+                        </div>
+                </Card>
+            </Container>
+                        
+                    
         </div>
     );
 
@@ -44,6 +110,23 @@ const MountainDetails = ({mountain}) => {
                     setHourly(response2.data.properties.periods);
                 })
             })
+    }
+
+    function getTime(forecast){
+        var d = new Date(forecast["startTime"]);
+        console.log(d.toString())
+        var dateStringArr = d.toString().split(" ")
+        var dateString = "";
+        for (let index = 0; index < dateStringArr.length; index++) {
+            if(index < 5){
+                dateString += dateStringArr[index] + " ";
+            }
+            if(index == 4){
+                dateString += "\n";
+            }
+            
+        }
+        return dateString;
     }
 }
 
