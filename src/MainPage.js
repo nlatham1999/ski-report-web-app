@@ -13,36 +13,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import mountainNames from './MountainNames';
 
-const boxShadowStyle1 = "-4px 4px 8px #5a5a5a, 7px -7px 50px #ffffff";
-const boxShadowStyle2 = "-4px 4px 8px #c5c5c5, 4px -4px 8px #e7e7e7";
-const boxShadowStyleInset = "inset -7px 7px 10px #5a5a5a, inset 7px -7px 10px #ffffff"
 
-const buttonStyleNotClicked = {
-    marginTop: "1%", 
-    marginRight: "1%",
-    backgroundColor: "#e0e0e0", 
-    borderWidth: 0, 
-    color: "#383838", 
-    boxShadow: boxShadowStyle1
-}
-
-const buttonStyleClicked = {
-    marginTop: "1%", 
-    marginRight: "1%",
-    backgroundColor: "#e0e0e0", 
-    borderWidth: 0, 
-    color: "#383838", 
-    boxShadow: boxShadowStyleInset
-}
-
-const cellStyle = {
-    color: "#383838",
-    marginTop: "1%", 
-    marginBottom: "1%", 
-    borderWidth: 0, 
-    backgroundColor: "#e0e0e0", 
-    boxShadow: boxShadowStyle2
-}
 
 const MainPage = () => {
     
@@ -74,7 +45,7 @@ const MainPage = () => {
         <div>
             {/* {gettingLocation && <ReactSpinner />} */}
             <Container 
-                style={{position: "fixed", zIndex: 1, paddingBottom: "1%", top: 0, left: 0, right: 0, backgroundColor: "#e0e0e0"}}
+                style={buttonContainerStyle}
             >
                 
                 <Button 
@@ -90,7 +61,7 @@ const MainPage = () => {
                     style={!sortByDist && !gettingLocation ? buttonStyleClicked : buttonStyleNotClicked}
                     disabled={gettingLocation}
                 >
-                    Sort by name
+                    Sort by Name
                 </Button>
             </Container >
             <Container style={{paddingTop: "70px", backgroundColor: "#e0e0e0"}}>
@@ -100,16 +71,18 @@ const MainPage = () => {
                             className="customCard"
                             style={cellStyle}
                         >
-                            <Row style={{margin: "1%"}}>
-                                <Col>
+                            <Row xs={2} md={3} lg={3} style={{margin: "1%"}}>
+                                <Col style={{padding: "0%"}}>
                                     {mtn["display name"]}
                                 </Col>
-                                <Col>
+                                <Col style={{padding: "0%"}}>
                                     {weatherData[mtn.name] && weatherData[mtn.name].temperature + "ºF"}
                                 </Col>
-                                <Col>
+                                {window.innerWidth > window.innerHeight &&
+                                <Col style={{padding: "0%"}}>
                                     {weatherData[mtn.name] && weatherData[mtn.name].shortForecast}
                                 </Col>
+                                }
                             </Row>
                         </Card>
                     </Link>
@@ -217,3 +190,52 @@ const MainPage = () => {
 }
 
 export default MainPage;
+
+const boxShadowStyle1 = "-4px 4px 8px #5a5a5a, 7px -7px 50px #ffffff";
+const boxShadowStyle2 = "-4px 4px 8px #c5c5c5, 4px -4px 8px #e7e7e7";
+const boxShadowStyleInset = "inset -7px 7px 10px #5a5a5a, inset 7px -7px 10px #ffffff";
+const borderRadius1 = "10px";
+
+//style for the container which holds the buttons
+const buttonContainerStyle = {
+    position: "fixed", 
+    zIndex: 1, 
+    paddingBottom: "1%", 
+    top: 0, 
+    left: 0, 
+    right: 0, 
+    backgroundColor: "#e0e0e0",
+    borderRadius: borderRadius1
+}
+
+const buttonStyleNotClicked = {
+    padding: "1%",
+    marginTop: "1%", 
+    marginRight: "1%",
+    backgroundColor: "#e0e0e0", 
+    borderWidth: 0, 
+    color: "#383838", 
+    boxShadow: boxShadowStyle1,
+    borderRadius: borderRadius1
+}
+
+const buttonStyleClicked = {
+    padding: "1%",
+    marginTop: "1%", 
+    marginRight: "1%",
+    backgroundColor: "#e0e0e0", 
+    borderWidth: 0, 
+    color: "#383838", 
+    boxShadow: boxShadowStyleInset,
+    borderRadius: borderRadius1
+}
+
+const cellStyle = {
+    color: "#383838",
+    marginTop: "3vmin", 
+    marginBottom: "3vmin", 
+    borderWidth: 0, 
+    backgroundColor: "#e0e0e0", 
+    boxShadow: boxShadowStyle2,
+    borderRadius: borderRadius1
+}
