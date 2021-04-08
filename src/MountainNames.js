@@ -10,7 +10,6 @@ function mountainNames () {
         {"name": "whitefish", "lat": 48.480740487490934, "lng": -114.35014905615843, "display name": "Whitefish", "state": "MT"},
         {"name": "alpine_meadows", "lat": 39.16476641125912, "lng": -120.23860027188792, "display name": "Alpine Meadows", "state": "CA"},
         {"name": "big_bear_mountain", "lat": 34.228670112278024, "lng": -116.85781021020217, "display name": "Big Bear Mountain", "state": "CA"},
-        {"name": "buckhorn_ski_snowboard_club", "lat": 34.342040718797925, "lng": -117.91909745907698, "display name": "Buckhorn Ski & Snowboard Club", "state": "CA"},
         {"name": "donner_ski_ranch", "lat": 39.31788128659341, "lng": -120.33026492955482, "display name": "Donner Ski Ranch", "state": "CA"}
     ]
 }

@@ -1,4 +1,8 @@
+body {
+    background-color:#e0e0e0;
+}
+
 .customCard:hover {
     /* background-color: rgb(228, 226, 226) !important; */
-    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06) !important
+    box-shadow: -7px 7px 50px #5a5a5a, 7px -7px 50px #ffffff !important
 }

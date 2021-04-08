@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
 import { Container, Col, Row, Card } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './MountainDetails.css'
+
 
 
 const MountainDetails = ({mountain}) => {
@@ -16,26 +18,26 @@ const MountainDetails = ({mountain}) => {
 
     return (
 
-        <div>
-            <Container style={{marginTop: "1%"}}>
-                <Card>
-                    <Card.Header>
+        <div styles={{backgroundColor: "#e0e0e0"}}>
+            <Container style={{marginTop: "1%", backgroundColor: "transparent"}}>
+                <Card style={cellStyle}>
+                    <Card.Header style={cardTopHeaderStyle}>
                         {mountain["display name"]}
                     </Card.Header>
                 </Card>
             </Container>
             <Container style={{marginTop: "1%"}}>
-                <Card>
-                    <Card.Header>
+                <Card style={cellStyle}>
+                    <Card.Header style={cardHeader}>
                         Forecast
                     </Card.Header>
                         < div
                             className="horizontalScrollDisplay"
-                            style={{overflowX: "scroll", scrollbarWidth: "none", overflowY: "hidden", whiteSpace: "nowrap", left: "0", right: "0"}}
+                            style={cardBigInside}
                         >
                             {longerRange.map((forecast, i) => (
-                                    <Card style={{display: "inline-block", width: "55vmin", marginLeft: "1%", marginTop: "1%", marginBottom: "1%", paddingTop: "0", top: "0"}}>
-                                        <Card.Header>
+                                    <Card style={cardStyle} className="customCard">
+                                        <Card.Header style={cardHeader}>
                                             {forecast["name"]}
                                         </Card.Header>
                                         <Card.Body style={{height: "30%", whiteSpace: "pre-wrap"}}>
@@ -55,17 +57,17 @@ const MountainDetails = ({mountain}) => {
                 </Card>
             </Container>
             <Container style={{marginTop: "1%"}}>
-                <Card>
-                    <Card.Header>
+                <Card style={cellStyle}>
+                    <Card.Header style={cardHeader}>
                         Hourly Forecast
                     </Card.Header>
                         < div
                             className="horizontalScrollDisplay"
-                            style={{overflowX: "scroll", scrollbarWidth: "none", overflowY: "hidden", whiteSpace: "nowrap", left: "0", right: "0"}}
+                            style={cardBigInside}
                         >
                             {hourly.map((forecast, i) => (
-                                    <Card style={{display: "inline-block", width: "55vmin", marginLeft: "1%", marginTop: "1%", marginBottom: "1%", paddingTop: "0", top: "0"}}>
-                                        <Card.Header style={{whiteSpace: "break-spaces"}}>
+                                    <Card style={cardStyle}>
+                                        <Card.Header style={cardHeader}>
                                             {getTime(forecast)}
                                         </Card.Header>
                                         <Card.Body style={{height: "30%", whiteSpace: "pre-wrap"}}>
@@ -131,3 +133,74 @@ const MountainDetails = ({mountain}) => {
 }
 
 export default MountainDetails;
+
+const boxShadowStyle1 = "-4px 4px 8px #5a5a5a, 7px -7px 50px #ffffff";
+const boxShadowStyle2 = "-4px 4px 8px #c5c5c5, 4px -4px 8px #e7e7e7";
+const boxShadowStyle2Inset = "inset -4px 4px 8px #c5c5c5, inset 4px -4px 8px #e7e7e7";
+const borderRadius1 = "10px";
+const textColor = "#383838";
+const backgroundColor1 = "#e0e0e0";
+
+const cellStyle = {
+    color: textColor,
+    marginTop: "3vmin", 
+    marginBottom: "3vmin", 
+    borderWidth: 0, 
+    backgroundColor: backgroundColor1, 
+    boxShadow: boxShadowStyle2,
+    borderRadius: borderRadius1
+}
+
+const cellStyleInset = {
+    color: textColor,
+    marginTop: "1%", 
+    marginBottom: "1%", 
+    borderWidth: 0, 
+    backgroundColor: backgroundColor1, 
+    boxShadow: boxShadowStyle2Inset
+}
+
+const cardStyle = {
+    color: textColor,
+    display: "inline-block", 
+    width: "55vmin", 
+    marginLeft: "3vmin", 
+    marginTop: "3vmin", 
+    marginBottom: "3vmin", 
+    paddingTop: "0", 
+    top: "0",
+    borderWidth: 0, 
+    backgroundColor: backgroundColor1,
+    boxShadow: boxShadowStyle2,
+    borderRadius: borderRadius1
+}
+
+const cardBigInside = {
+    color: textColor,
+    overflowX: "scroll", 
+    scrollbarWidth: "none", 
+    overflowY: "hidden", 
+    whiteSpace: "nowrap", 
+    left: "0", 
+    right: "0", 
+    backgroundColor: backgroundColor1,
+    boxShadow: boxShadowStyle2Inset,
+    borderBottomLeftRadius: borderRadius1,
+    borderBottomRightRadius: borderRadius1
+}
+
+const cardHeader = {
+    color: textColor,
+    borderWidth: 0,
+    whiteSpace: "break-spaces", 
+    backgroundColor: backgroundColor1,
+    borderTopLeftRadius: borderRadius1, 
+    borderTopRightRadius: borderRadius1
+}
+
+const cardTopHeaderStyle = {
+    color: textColor,
+    borderWidth: 0,
+    backgroundColor: backgroundColor1,
+    borderRadius: borderRadius1
+}

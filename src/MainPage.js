@@ -13,6 +13,36 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import mountainNames from './MountainNames';
 
+const boxShadowStyle1 = "-4px 4px 8px #5a5a5a, 7px -7px 50px #ffffff";
+const boxShadowStyle2 = "-4px 4px 8px #c5c5c5, 4px -4px 8px #e7e7e7";
+const boxShadowStyleInset = "inset -7px 7px 10px #5a5a5a, inset 7px -7px 10px #ffffff"
+
+const buttonStyleNotClicked = {
+    marginTop: "1%", 
+    marginRight: "1%",
+    backgroundColor: "#e0e0e0", 
+    borderWidth: 0, 
+    color: "#383838", 
+    boxShadow: boxShadowStyle1
+}
+
+const buttonStyleClicked = {
+    marginTop: "1%", 
+    marginRight: "1%",
+    backgroundColor: "#e0e0e0", 
+    borderWidth: 0, 
+    color: "#383838", 
+    boxShadow: boxShadowStyleInset
+}
+
+const cellStyle = {
+    color: "#383838",
+    marginTop: "1%", 
+    marginBottom: "1%", 
+    borderWidth: 0, 
+    backgroundColor: "#e0e0e0", 
+    boxShadow: boxShadowStyle2
+}
 
 const MainPage = () => {
     
@@ -43,31 +73,32 @@ const MainPage = () => {
     return (
         <div>
             {/* {gettingLocation && <ReactSpinner />} */}
-            <Container style={{position: "fixed", zIndex: 1, paddingBottom: "1%", top: 0, left: 0, right: 0, backgroundColor: "white", borderBottom: "1px solid"}}>
+            <Container 
+                style={{position: "fixed", zIndex: 1, paddingBottom: "1%", top: 0, left: 0, right: 0, backgroundColor: "#e0e0e0"}}
+            >
                 
                 <Button 
                     onClick={()=>getUserLocation()} 
-                    style={{marginTop: "1%", boxShadow: "0 1px 1px rgba(0,0,0,.06), 0 0px 0px rgba(0,0,0,.06)"}}
+                    style={sortByDist || gettingLocation ? buttonStyleClicked : buttonStyleNotClicked}
                     disabled={gettingLocation}
-                    variant= {sortByDist || gettingLocation ? "dark" : "light"}
+                    // variant= {sortByDist || gettingLocation ? "dark" : "light"}
                 >
                     {gettingLocation ? 'Loading…' : 'Sort by Distance'}
                 </Button>
                 <Button 
                     onClick={()=>setSortByDist(false)} 
-                    style={{marginTop: "1%", marginLeft: "1%", boxShadow: "0 1px 1px rgba(0,0,0,.06), 0 0px 0px rgba(0,0,0,.06)"}}
+                    style={!sortByDist && !gettingLocation ? buttonStyleClicked : buttonStyleNotClicked}
                     disabled={gettingLocation}
-                    variant= {!sortByDist && !gettingLocation ? "dark" : "light"}
                 >
                     Sort by name
                 </Button>
             </Container >
-            <Container style={{marginTop: "70px"}}>
+            <Container style={{paddingTop: "70px", backgroundColor: "#e0e0e0"}}>
                 {mtnNames.map((mtn, i) => (
                     <Link to={"/"+mtn["name"]} style={{textDecoration: "none", color: "black"}}>
                         <Card 
                             className="customCard"
-                            style={{marginTop: "1%", marginBottom: "1%", boxShadow: "0 1px 1px rgba(0,0,0,.06), 0 0px 0px rgba(0,0,0,.06)"}}
+                            style={cellStyle}
                         >
                             <Row style={{margin: "1%"}}>
                                 <Col>
