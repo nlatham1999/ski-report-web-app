@@ -7,11 +7,10 @@ import 'react-spinning-wheel/dist/style.css';
 
 import { Link} from 'react-router-dom';
 
-import {Button, Card, Form, Row, Container, Col } from 'react-bootstrap'
+import {Button, Card, Form, Row, Container, Col, Modal } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import mountainNames from './MountainNames';
-
 
 
 const MainPage = () => {
@@ -22,6 +21,7 @@ const MainPage = () => {
     const [gettingLocation, setGettingLocation] = useState(false);
     const [weatherData, setWeatherData] = useState({});
     const [refresh, setRefresh] = useState(false);
+    const [showInfo, setShowInfo] = useState(false);
 
     
     var locationOptions = {
@@ -65,6 +65,7 @@ const MainPage = () => {
                 {window.innerWidth < window.innerHeight &&
                     <Button
                         style = {Object.assign({}, buttonStyleNotClicked,{float: "right", paddingLeft: "3.5vmin", paddingRight: "3.5vmin"})}
+                        onClick={() => setShowInfo(true)}
                     >   
                         i
                     </Button>
@@ -72,6 +73,7 @@ const MainPage = () => {
                 {window.innerWidth >= window.innerHeight &&
                     <Button
                         style = {Object.assign({}, buttonStyleNotClicked,{float: "right"})}
+                        onClick={() => setShowInfo(true)}
                     >   
                         about
                     </Button>
@@ -108,6 +110,26 @@ const MainPage = () => {
                     </Link>
                 ))}
             </Container>
+            <Modal show={showInfo} onHide={() => setShowInfo(false)} centered>
+                <Modal.Header closeButton>
+                    <Modal.Title>Ski Weather App</Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body>
+                    <h>Creator: <a href="https://nicholaslatham.com">Nick Latham</a></h>
+                    <p>The design style of this app is <a href="https://www.justinmind.com/blog/neumorphism-ui/">Neumorphism</a> <br></br> 
+                        Data is gathered using the <a href="https://www.weather.gov/documentation/services-web-api">NOAA weather API</a><br></br>
+                        Made with React and hosted on AWS Amplify <br></br></p>
+                    <a 
+                        class="bmc-button bmcButton" 
+                        href="https://www.buymeacoffee.com/nicklatham" 
+                        target="_blank" 
+                        onclick="return getOutboundLink(&quot;https://www.buymeacoffee.com/nicklatham&quot;),!0">
+                            <img alt="Buy me a coffee" src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" />
+                            <span>Buy me a coffee</span>
+                    </a>
+                </Modal.Body>
+            </Modal>
 
             
         </div>
@@ -136,7 +158,7 @@ const MainPage = () => {
                     setGettingLocation(false);
                 }
                 result.onchange = function () {
-                  console.log(result.state);
+                //   console.log(result.state);
                 };
             });
         } else {
@@ -184,7 +206,7 @@ const MainPage = () => {
 
     function getWeatherOfEach(mtn){
         var url = "https://api.weather.gov/points/" + mtn["lat"] + "," + mtn["lng"];
-        console.log(mtn.name)
+        // console.log(mtn.name)
         axios
             .get(url, {
                 responseType: 'json',
@@ -197,7 +219,7 @@ const MainPage = () => {
                     var data = {}
                     data["temperature"] = response2.data.properties.periods[0].temperature;
                     data["shortForecast"] = response2.data.properties.periods[0].shortForecast;
-                    console.log(data.temperature)
+                    // console.log(data.temperature)
                     var data2 = weatherData;
                     data2[mtn.name] = data;
                     setWeatherData(data2);
@@ -261,3 +283,4 @@ const cellStyle = {
     boxShadow: boxShadowStyle2,
     borderRadius: borderRadius1
 }
+
