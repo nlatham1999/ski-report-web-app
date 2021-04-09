@@ -62,11 +62,20 @@ const MainPage = () => {
                 >
                     Sort by Name
                 </Button>
-                <Button
-                    style = {Object.assign({}, buttonStyleNotClicked,{float: "right"})}
-                >   
-                    About
-                </Button>
+                {window.innerWidth < window.innerHeight &&
+                    <Button
+                        style = {Object.assign({}, buttonStyleNotClicked,{float: "right", paddingLeft: "3.5vmin", paddingRight: "3.5vmin"})}
+                    >   
+                        i
+                    </Button>
+                }
+                {window.innerWidth >= window.innerHeight &&
+                    <Button
+                        style = {Object.assign({}, buttonStyleNotClicked,{float: "right"})}
+                    >   
+                        about
+                    </Button>
+                }
             </Container >
             <Container style={{paddingTop: "70px", backgroundColor: "#e0e0e0"}}>
                 {mtnNames.map((mtn, i) => (
@@ -80,12 +89,21 @@ const MainPage = () => {
                                     {mtn["display name"]}
                                 </Col>
                                 <Col style={{padding: "0%"}}>
-                                    {weatherData[mtn.name] && weatherData[mtn.name].temperature + "ºF"}
+                                    {weatherData[mtn.name] && weatherData[mtn.name].temperature + "°F"}
                                 </Col>
-                                <Col style={{padding: "0%"}}>
-                                    {weatherData[mtn.name] && weatherData[mtn.name].shortForecast}
-                                </Col>
+                                {window.innerWidth >= window.innerHeight &&
+                                    <Col style={{padding: "0%"}}>
+                                        {weatherData[mtn.name] && weatherData[mtn.name].shortForecast}
+                                    </Col>
+                                }
                             </Row>
+                            {window.innerWidth < window.innerHeight &&
+                                <Row style={{marginLeft: "1%"}}>
+                                    <Col style={{padding: "0%"}}>
+                                        {weatherData[mtn.name] && weatherData[mtn.name].shortForecast}
+                                    </Col>
+                                </Row>
+                            }
                         </Card>
                     </Link>
                 ))}
