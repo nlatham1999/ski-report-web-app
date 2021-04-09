@@ -4,7 +4,7 @@ body {
 
 .customCard:hover {
   /* background-color: rgb(228, 226, 226) !important; */
-  box-shadow: -4px 4px 8px #5a5a5a, 4px -4px 8px #ffffff !important
+  /* box-shadow: -4px 4px 8px #5a5a5a, 4px -4px 8px #ffffff !important */
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

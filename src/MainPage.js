@@ -86,8 +86,8 @@ const MainPage = () => {
                             className="customCard"
                             style={cellStyle}
                         >
-                            <Row xs={2} md={3} lg={3} style={{margin: "1%"}}>
-                                <Col style={{padding: "0%"}}>
+                            <Row md={3} lg={3} style={{margin: "1%", paddingLeft: "2%"}}>
+                                <Col xs={8} style={{padding: "0%"}}>
                                     {mtn["display name"]}
                                 </Col>
                                 <Col style={{padding: "0%"}}>
@@ -100,7 +100,7 @@ const MainPage = () => {
                                 }
                             </Row>
                             {window.innerWidth < window.innerHeight &&
-                                <Row style={{marginLeft: "1%"}}>
+                                <Row style={{marginLeft: "1%", paddingLeft: "2%"}}>
                                     <Col style={{padding: "0%"}}>
                                         {weatherData[mtn.name] && weatherData[mtn.name].shortForecast}
                                     </Col>
@@ -251,7 +251,10 @@ const buttonContainerStyle = {
 }
 
 const buttonStyleNotClicked = {
-    padding: "1%",
+    paddingTop: "1%",
+    paddingBottom: "1%",
+    paddingLeft: "2%",
+    paddingRight: "2%",
     marginTop: "1%", 
     marginRight: "1%",
     backgroundColor: "#e0e0e0", 
@@ -263,7 +266,10 @@ const buttonStyleNotClicked = {
 }
 
 const buttonStyleClicked = {
-    padding: "1%",
+    paddingTop: "1%",
+    paddingBottom: "1%",
+    paddingLeft: "2%",
+    paddingRight: "2%",
     marginTop: "1%", 
     marginRight: "1%",
     backgroundColor: "#e0e0e0", 

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
-import { Container, Col, Row, Card } from 'react-bootstrap';
+import { Container, Col, Row, Card, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import backButton from "./back.png";
 import { Link} from 'react-router-dom';
@@ -23,25 +23,17 @@ const MountainDetails = ({mountain}) => {
 
         <div styles={{backgroundColor: "#e0e0e0"}}>
             <Container style={{marginTop: "1%", backgroundColor: "transparent"}}>
-                <Row>
-                    <Col xs={3} sm={1} md={1} style={{marginRight: "0%", paddingRight: "0%"}}>
                         
-                        <Link to={"/"} style={{textDecoration: "none", color: "black"}}>
-                            <Card style={cellStyle2}>
-                                <Card.Header style={cardTopHeaderStyle}>
-                                    {"<"}
-                                </Card.Header>
-                            </Card>
-                        </Link>
-                    </Col>
-                    <Col style={{marginLeft: "3vmin", paddingLeft: "0%"}}>
                         <Card style={cellStyle2}>
                             <Card.Header style={cardTopHeaderStyle}>
+                                <Link to={"/"} style={{textDecoration: "none", color: "black"}}>
+                                    <Button style={buttonStyleNotClicked}>
+                                        {"<"}
+                                    </Button>
+                                </Link>
                                 {mountain["display name"]}
                             </Card.Header>
                         </Card>
-                    </Col>
-                </Row>
             </Container>
             <Container style={{marginTop: "1%"}}>
                 <Card style={cellStyle}>
@@ -229,4 +221,18 @@ const cardTopHeaderStyle = {
     borderWidth: 0,
     backgroundColor: backgroundColor1,
     borderRadius: borderRadius1
+}
+
+const buttonStyleNotClicked = {
+    paddingTop: "1%",
+    paddingBottom: "1%",
+    paddingLeft: "3%",
+    paddingRight: "3%", 
+    marginRight: "2%",
+    backgroundColor: "#e0e0e0",
+    borderWidth: 0, 
+    color: "#383838", 
+    boxShadow: boxShadowStyle1,
+    borderRadius: borderRadius1,
+    fontWeight: 600
 }
