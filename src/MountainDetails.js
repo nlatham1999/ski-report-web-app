@@ -34,7 +34,7 @@ const MountainDetails = ({mountain}) => {
                             </Card>
                         </Link>
                     </Col>
-                    <Col style={{marginLeft: "3vmin", padding: "0%"}}>
+                    <Col style={{marginLeft: "3vmin", paddingLeft: "0%"}}>
                         <Card style={cellStyle2}>
                             <Card.Header style={cardTopHeaderStyle}>
                                 {mountain["display name"]}

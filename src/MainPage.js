@@ -62,6 +62,11 @@ const MainPage = () => {
                 >
                     Sort by Name
                 </Button>
+                <Button
+                    style = {Object.assign({}, buttonStyleNotClicked,{float: "right"})}
+                >   
+                    About
+                </Button>
             </Container >
             <Container style={{paddingTop: "70px", backgroundColor: "#e0e0e0"}}>
                 {mtnNames.map((mtn, i) => (
@@ -213,7 +218,8 @@ const buttonStyleNotClicked = {
     borderWidth: 0, 
     color: "#383838", 
     boxShadow: boxShadowStyle1,
-    borderRadius: borderRadius1
+    borderRadius: borderRadius1,
+    fontWeight: 600
 }
 
 const buttonStyleClicked = {
@@ -224,7 +230,8 @@ const buttonStyleClicked = {
     borderWidth: 0, 
     color: "#383838", 
     boxShadow: boxShadowStyleInset,
-    borderRadius: borderRadius1
+    borderRadius: borderRadius1,
+    fontWeight: 600
 }
 
 const cellStyle = {
