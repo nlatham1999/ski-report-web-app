@@ -2,6 +2,9 @@ import React, {useState, useEffect} from 'react';
 import axios from "axios";
 import { Container, Col, Row, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import backButton from "./back.png";
+import { Link} from 'react-router-dom';
+
 
 import './MountainDetails.css'
 
@@ -20,11 +23,25 @@ const MountainDetails = ({mountain}) => {
 
         <div styles={{backgroundColor: "#e0e0e0"}}>
             <Container style={{marginTop: "1%", backgroundColor: "transparent"}}>
-                <Card style={cellStyle}>
-                    <Card.Header style={cardTopHeaderStyle}>
-                        {mountain["display name"]}
-                    </Card.Header>
-                </Card>
+                <Row>
+                    <Col xs={3} sm={1} md={1} style={{marginRight: "0%", paddingRight: "0%"}}>
+                        
+                        <Link to={"/"} style={{textDecoration: "none", color: "black"}}>
+                            <Card style={cellStyle2}>
+                                <Card.Header style={cardTopHeaderStyle}>
+                                    {"<"}
+                                </Card.Header>
+                            </Card>
+                        </Link>
+                    </Col>
+                    <Col style={{marginLeft: "3vmin", padding: "0%"}}>
+                        <Card style={cellStyle2}>
+                            <Card.Header style={cardTopHeaderStyle}>
+                                {mountain["display name"]}
+                            </Card.Header>
+                        </Card>
+                    </Col>
+                </Row>
             </Container>
             <Container style={{marginTop: "1%"}}>
                 <Card style={cellStyle}>
@@ -145,6 +162,15 @@ const cellStyle = {
     color: textColor,
     marginTop: "3vmin", 
     marginBottom: "3vmin", 
+    borderWidth: 0, 
+    backgroundColor: backgroundColor1, 
+    boxShadow: boxShadowStyle2,
+    borderRadius: borderRadius1
+}
+
+const cellStyle2 = {
+    color: textColor,
+    marginTop: "2vmin", 
     borderWidth: 0, 
     backgroundColor: backgroundColor1, 
     boxShadow: boxShadowStyle2,

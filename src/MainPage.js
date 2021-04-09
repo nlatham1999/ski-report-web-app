@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
-
 import './MainPage.css'
 
 import {ReactSpinner} from 'react-spinning-wheel';
@@ -78,11 +77,9 @@ const MainPage = () => {
                                 <Col style={{padding: "0%"}}>
                                     {weatherData[mtn.name] && weatherData[mtn.name].temperature + "ºF"}
                                 </Col>
-                                {window.innerWidth > window.innerHeight &&
                                 <Col style={{padding: "0%"}}>
                                     {weatherData[mtn.name] && weatherData[mtn.name].shortForecast}
                                 </Col>
-                                }
                             </Row>
                         </Card>
                     </Link>
