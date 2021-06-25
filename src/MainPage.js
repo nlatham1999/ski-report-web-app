@@ -13,9 +13,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import mountainNames from './MountainNames';
 
 
-const MainPage = () => {
+const MainPage = ({mountainNames, includeHeaders, title}) => {
     
-    const [mtnNames, setMtnNames] = useState(mountainNames());
+    const [mtnNames, setMtnNames] = useState(mountainNames);
     const [userLocation, setUserLocation] = useState({"lat": 0, "lng": 0})
     const [sortByDist, setSortByDist] = useState(false);
     const [gettingLocation, setGettingLocation] = useState(false);
@@ -43,6 +43,7 @@ const MainPage = () => {
     return (
         <div>
             {/* {gettingLocation && <ReactSpinner />} */}
+            {includeHeaders &&
             <Container 
                 style={buttonContainerStyle}
             >
@@ -79,6 +80,12 @@ const MainPage = () => {
                     </Button>
                 }
             </Container >
+            }
+            {!includeHeaders &&
+            <Container 
+                style={buttonContainerStyle}
+            >{title}</Container>
+            }
             <Container style={{paddingTop: "70px", backgroundColor: "#e0e0e0"}}>
                 {mtnNames.map((mtn, i) => (
                     <Link to={"/"+mtn["name"]} style={{textDecoration: "none", color: "black"}}>

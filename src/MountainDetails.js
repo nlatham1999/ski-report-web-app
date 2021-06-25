@@ -10,7 +10,7 @@ import './MountainDetails.css'
 
 
 
-const MountainDetails = ({mountain}) => {
+const MountainDetails = ({mountain, backLink}) => {
 
     const [longerRange, setLongerRange] = useState([]);
     const [hourly, setHourly] = useState([]);
@@ -26,7 +26,7 @@ const MountainDetails = ({mountain}) => {
                         
                         <Card style={cellStyle2}>
                             <Card.Header style={cardTopHeaderStyle}>
-                                <Link to={"/"} style={{textDecoration: "none", color: "black"}}>
+                                <Link to={backLink} style={{textDecoration: "none", color: "black"}}>
                                     <Button style={buttonStyleNotClicked}>
                                         {"<"}
                                     </Button>

@@ -12,7 +12,6 @@ function mountainNames () {
         {"name": "mammoth_mountain", "lat": 37.65147263379701, "lng": -119.02623317738863, "display name": "Mammoth Mountain", "state": "CA"},
         {"name": "mission_ridge", "lat": 47.31512546744439, "lng": -120.20051466081155, "display name": "Mission Ridge", "state": "WA"},
         
-        {"name": "mt_adams", "lat": 46.20555534459451, "lng": -121.49331657705136, "display name": "Mt Adams", "state": "WA"} // not a ski mountain, but im going hinking here and I wnt that weather
 
         // {"name": "alpine_meadows", "lat": 39.16476641125912, "lng": -120.23860027188792, "display name": "Alpine Meadows", "state": "CA"},
         // {"name": "big_bear_mountain", "lat": 34.228670112278024, "lng": -116.85781021020217, "display name": "Big Bear Mountain", "state": "CA"},
