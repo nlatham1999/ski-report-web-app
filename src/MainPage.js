@@ -250,6 +250,7 @@ const buttonContainerStyle = {
     position: "fixed", 
     zIndex: 1, 
     paddingBottom: "1%", 
+    marginTop: "1%",
     top: 0, 
     left: 0, 
     right: 0, 
