@@ -45,7 +45,7 @@ const MainPage = ({mountainNames, includeHeaders, title}) => {
             {/* {gettingLocation && <ReactSpinner />} */}
             {includeHeaders &&
             <Container 
-                style={buttonContainerStyle}
+                className="buttonContainerStyle"
             >
                 
                 <Button 
@@ -83,10 +83,12 @@ const MainPage = ({mountainNames, includeHeaders, title}) => {
             }
             {!includeHeaders &&
             <Container 
-                style={buttonContainerStyle}
+                className="buttonContainerStyle"
             >{title}</Container>
             }
-            <Container style={{paddingTop: "70px", backgroundColor: "#e0e0e0"}}>
+            <Container
+                className="buttonContainerStyle2"
+            >
                 {mtnNames.map((mtn, i) => (
                     <Link to={"/"+mtn["name"]} style={{textDecoration: "none", color: "black"}}>
                         <Card 
@@ -246,17 +248,6 @@ const boxShadowStyleInset = "inset -7px 7px 10px #5a5a5a, inset 7px -7px 10px #f
 const borderRadius1 = "10px";
 
 //style for the container which holds the buttons
-const buttonContainerStyle = {
-    position: "fixed", 
-    zIndex: 1, 
-    paddingBottom: "1%", 
-    marginTop: "1%",
-    top: 0, 
-    left: 0, 
-    right: 0, 
-    backgroundColor: "#e0e0e0",
-    borderRadius: borderRadius1
-}
 
 const buttonStyleNotClicked = {
     paddingTop: "1%",
