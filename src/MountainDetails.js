@@ -75,7 +75,7 @@ const MountainDetails = ({mountain, backLink}) => {
                             style={cardBigInside}
                         >
                             {hourly.map((forecast, i) => (
-                                    <Card style={cardStyle}>
+                                    <Card style={cardStyle} className="customCard">
                                         <Card.Header style={cardHeader}>
                                             {getTime(forecast)}
                                         </Card.Header>
@@ -143,11 +143,11 @@ const MountainDetails = ({mountain, backLink}) => {
 
 export default MountainDetails;
 
-const boxShadowStyle1 = "-4px 4px 8px #5a5a5a, 7px -7px 50px #ffffff";
-const boxShadowStyle2 = "-4px 4px 8px #c5c5c5, 4px -4px 8px #e7e7e7";
-const boxShadowStyle2Inset = "inset -4px 4px 8px #c5c5c5, inset 4px -4px 8px #e7e7e7";
+const boxShadowStyle1 = "-4px 4px 10px #bebebe, 7px -7px 10px #ffffff";
+const boxShadowStyle2 = "-4px 4px 10px #bebebe, 4px -4px 10px #ffffff";
+const boxShadowStyle2Inset = "inset -4px 4px 10px #bebebe, inset 4px -4px 10px #ffffff";
 const borderRadius1 = "10px";
-const textColor = "#383838";
+const textColor = "#606060";
 const backgroundColor1 = "#e0e0e0";
 
 const cellStyle = {
@@ -231,7 +231,7 @@ const buttonStyleNotClicked = {
     marginRight: "2%",
     backgroundColor: "#e0e0e0",
     borderWidth: 0, 
-    color: "#383838", 
+    color: textColor, 
     boxShadow: boxShadowStyle1,
     borderRadius: borderRadius1,
     fontWeight: 600

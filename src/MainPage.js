@@ -242,10 +242,12 @@ const MainPage = ({mountainNames, includeHeaders, title}) => {
 
 export default MainPage;
 
-const boxShadowStyle1 = "-4px 4px 8px #5a5a5a, 7px -7px 50px #ffffff";
-const boxShadowStyle2 = "-4px 4px 8px #c5c5c5, 4px -4px 8px #e7e7e7";
-const boxShadowStyleInset = "inset -7px 7px 10px #5a5a5a, inset 7px -7px 10px #ffffff";
+const boxShadowStyle1 = "-4px 4px 10px #bebebe, 7px -7px 10px #ffffff";
+const boxShadowStyle2 = "-4px 4px 10px #bebebe, 4px -4px 10px #ffffff";
+const boxShadowStyleInset = "inset -7px 7px 10px #bebebe, inset 7px -7px 10px #ffffff";
+const boxShadowStyleInset2 = "inset -4px 4px 10px #bebebe, inset 4px -4px 10px #ffffff";
 const borderRadius1 = "10px";
+const textColor = "#606060";
 
 //style for the container which holds the buttons
 
@@ -258,8 +260,8 @@ const buttonStyleNotClicked = {
     marginRight: "1%",
     backgroundColor: "#e0e0e0", 
     borderWidth: 0, 
-    color: "#383838", 
-    boxShadow: boxShadowStyle1,
+    color: textColor, 
+    boxShadow: boxShadowStyle2,
     borderRadius: borderRadius1,
     fontWeight: 600
 }
@@ -273,14 +275,14 @@ const buttonStyleClicked = {
     marginRight: "1%",
     backgroundColor: "#e0e0e0", 
     borderWidth: 0, 
-    color: "#383838", 
+    color: textColor, 
     boxShadow: boxShadowStyleInset,
     borderRadius: borderRadius1,
     fontWeight: 600
 }
 
 const cellStyle = {
-    color: "#383838",
+    color: textColor,
     marginTop: "3vmin", 
     marginBottom: "3vmin", 
     borderWidth: 0, 
