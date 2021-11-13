@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import MountainDetails from './MountainDetails';
 import { NavLink, Switch, Route, BrowserRouter } from 'react-router-dom';

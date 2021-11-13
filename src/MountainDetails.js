@@ -143,9 +143,9 @@ const MountainDetails = ({mountain, backLink}) => {
 
 export default MountainDetails;
 
-const boxShadowStyle1 = "-4px 4px 10px #bebebe, 7px -7px 10px #ffffff";
-const boxShadowStyle2 = "-4px 4px 10px #bebebe, 4px -4px 10px #ffffff";
-const boxShadowStyle2Inset = "inset -4px 4px 10px #bebebe, inset 4px -4px 10px #ffffff";
+const boxShadowStyle1 = "-4px 4px 11px #bebebe, 4px -4px 11px #ffffff";
+const boxShadowStyle2 = "-4px 4px 11px #bebebe, 4px -4px 11px #ffffff";
+const boxShadowStyle2Inset = "inset -4px 4px 10px #bebebe, inset 4px -4px 11px #ffffff";
 const borderRadius1 = "10px";
 const textColor = "#606060";
 const backgroundColor1 = "#e0e0e0";

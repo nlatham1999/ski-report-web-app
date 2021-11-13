@@ -2,11 +2,12 @@ body {
     background-color:#e0e0e0;
     font-family:'Baloo Thambi 2', Arial, Helvetica, sans-serif;
     font-weight: 600;
+    max-height: 90vh;
 }
 
 .customCard:hover {
     /* background-color: rgb(228, 226, 226) !important; */
-    box-shadow: -5px 5px 10px #bebebe, 5px -5px 10px #ffffff !important
+    box-shadow: -5px 5px 11px #bebebe, 5px -5px 11px #ffffff !important
 }
 
 .buttonContainerStyle {
@@ -22,7 +23,7 @@ body {
 .buttonContainerStyle2 {
     background-color: #e0e0e0;
     justify-content: center;
-    max-height: 80vh;
+    max-height: 82vh;
     border-radius: 10px;
     /* padding: 0vh 8vw 0vh 8vw; */
     /* margin: 0vw 4vw 0vw 4vw; */

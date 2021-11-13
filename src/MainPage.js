@@ -65,7 +65,7 @@ const MainPage = ({mountainNames, includeHeaders, title}) => {
                 </Button>
                 {window.innerWidth < window.innerHeight &&
                     <Button
-                        style = {Object.assign({}, buttonStyleNotClicked,{float: "right", paddingLeft: "3.5vmin", paddingRight: "3.5vmin"})}
+                        style = {Object.assign({}, buttonStyleNotClicked,{float: "right", paddingLeft: "3.5vmin", paddingRight: "3.5vmin", marginRight: 0})}
                         onClick={() => setShowInfo(true)}
                     >   
                         i
@@ -73,7 +73,7 @@ const MainPage = ({mountainNames, includeHeaders, title}) => {
                 }
                 {window.innerWidth >= window.innerHeight &&
                     <Button
-                        style = {Object.assign({}, buttonStyleNotClicked,{float: "right"})}
+                        style = {Object.assign({}, buttonStyleNotClicked2,{float: "right", marginRight: 0})}
                         onClick={() => setShowInfo(true)}
                     >   
                         about
@@ -242,10 +242,10 @@ const MainPage = ({mountainNames, includeHeaders, title}) => {
 
 export default MainPage;
 
-const boxShadowStyle1 = "-4px 4px 10px #bebebe, 7px -7px 10px #ffffff";
-const boxShadowStyle2 = "-4px 4px 10px #bebebe, 4px -4px 10px #ffffff";
-const boxShadowStyleInset = "inset -7px 7px 10px #bebebe, inset 7px -7px 10px #ffffff";
-const boxShadowStyleInset2 = "inset -4px 4px 10px #bebebe, inset 4px -4px 10px #ffffff";
+const boxShadowStyle1 = "-4px 4px 11px #bebebe, 7px -7px 11px #ffffff";
+const boxShadowStyle2 = "-4px 4px 11px #bebebe, 4px -4px 11px #ffffff";
+const boxShadowStyleInset = "inset -7px 7px 10px #bebebe, inset 7px -7px 11px #ffffff";
+const boxShadowStyleInset2 = "inset -4px 4px 10px #bebebe, inset 4px -4px 11px #ffffff";
 const borderRadius1 = "10px";
 const textColor = "#606060";
 
@@ -257,7 +257,21 @@ const buttonStyleNotClicked = {
     paddingLeft: "2%",
     paddingRight: "2%",
     marginTop: "1%", 
-    marginRight: "1%",
+    marginRight: "3vmin",
+    backgroundColor: "#e0e0e0", 
+    borderWidth: 0, 
+    color: textColor, 
+    boxShadow: boxShadowStyle2,
+    borderRadius: borderRadius1,
+    fontWeight: 600
+}
+
+const buttonStyleNotClicked2 = {
+    paddingTop: "1%",
+    paddingBottom: "1%",
+    paddingLeft: "2%",
+    paddingRight: "2%",
+    marginTop: "1%", 
     backgroundColor: "#e0e0e0", 
     borderWidth: 0, 
     color: textColor, 
@@ -272,7 +286,7 @@ const buttonStyleClicked = {
     paddingLeft: "2%",
     paddingRight: "2%",
     marginTop: "1%", 
-    marginRight: "1%",
+    marginRight: "3vmin",
     backgroundColor: "#e0e0e0", 
     borderWidth: 0, 
     color: textColor, 
