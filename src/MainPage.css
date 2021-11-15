@@ -17,8 +17,8 @@ body {
 
 .customCard {
     color: var(--textColor);
-    margin-top: 3vmin; 
-    margin-bottom: 3vmin; 
+    margin-top: 4vmin; 
+    margin-bottom: 4vmin; 
     border-width: 0; 
     background-color: var(--backgroundColor); 
     box-shadow: var(--boxShadowStyle);
@@ -59,7 +59,7 @@ body {
     padding-left: 2%;
     padding-right: 2%;
     margin-top: 1%; 
-    margin-right: 3vmin;
+    margin-right: 4vmin;
     background-color: var(--backgroundColor) !important;
     border-width: 0 !important;
     color: var(--textColor) !important; 
@@ -74,7 +74,7 @@ body {
     padding-left: 2%;
     padding-right: 2%;
     margin-top: 1%; 
-    margin-right: 3vmin;
+    margin-right: 4vmin;
     background-color: var(--backgroundColor) !important; 
     border-width: 0 !important; 
     color: var(--textColor) !important;
