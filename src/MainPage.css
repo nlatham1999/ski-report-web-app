@@ -1,10 +1,10 @@
 :root {
     --textColor: #606060;
     --backgroundColor: #e0e0e0;
-    --boxShadowStyle: -4px 4px 11px #bebebe, 7px -7px 11px #ffffff;
-    --boxShadowStyleInset: inset -7px 7px 10px #bebebe, inset 7px -7px 11px #ffffff;
-    --boxShadowStyleHover: -8px 8px 11px #bebebe, 8px -8px 11px #ffffff;
-    --borderRadius: 10px;
+    --boxShadowStyle: -.6vmin .6vmin 1.9vmin #bebebe, .6vmin -.6vmin 1.9vmin #ffffff;
+    --boxShadowStyleInset: inset -.6vmin .6vmin 1.9vmin #bebebe, inset .6vmin -.6vmin 1.9vmin #ffffff;
+    --boxShadowStyleHover: -.8vmin .8vmin 1.9vmin #bebebe, .8vmin -.8vmin 1.9vmin #ffffff;
+    --borderRadius: 2vmin;
 
 }
 
