@@ -9,7 +9,7 @@
 }
 
 body {
-    background-color:#e0e0e0;
+    background-color:var(--backgroundColor);
     font-family:'Baloo Thambi 2', Arial, Helvetica, sans-serif;
     font-weight: 600;
     max-height: 90vh;
@@ -20,7 +20,7 @@ body {
     margin-top: 3vmin; 
     margin-bottom: 3vmin; 
     border-width: 0; 
-    background-color: #e0e0e0; 
+    background-color: var(--backgroundColor); 
     box-shadow: var(--boxShadowStyle);
     border-radius: var(--borderRadius);
 }
@@ -35,14 +35,14 @@ body {
     margin-top: 2vh;
     justify-content: center;
     background-color: var(--backgroundColor);
-    border-radius: 10px;
+    border-radius: var(--borderRadius);
 }
 
 .buttonContainerStyle2 {
     background-color: var(--backgroundColor);
     justify-content: center;
     max-height: 82vh;
-    border-radius: 10px;
+    border-radius: var(--borderRadius);
     overflow-y: scroll;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
@@ -60,18 +60,12 @@ body {
     padding-right: 2%;
     margin-top: 1%; 
     margin-right: 3vmin;
-    background-color: var(--backgroundColor);
-    border-width: 0;
-    color: var(--textColor); 
-    box-shadow: var(--boxShadowStyleInset);
+    background-color: var(--backgroundColor) !important;
+    border-width: 0 !important;
+    color: var(--textColor) !important; 
+    box-shadow: var(--boxShadowStyleInset) !important;
     border-radius: var(--borderRadius);
     font-weight: 600;
-}
-
-
-.buttonStyleClicked:hover{
-    background-color: var(--backgroundColor);
-    color: var(--textColor);
 }
 
 .buttonStyleNotClicked {
@@ -81,17 +75,19 @@ body {
     padding-right: 2%;
     margin-top: 1%; 
     margin-right: 3vmin;
-    background-color: var(--backgroundColor); 
-    border-width: 0; 
-    color: var(--textColor);
+    background-color: var(--backgroundColor) !important; 
+    border-width: 0 !important; 
+    color: var(--textColor) !important;
     box-shadow: var(--boxShadowStyle);
     border-radius: var(--borderRadius);
     font-weight: 600;
 }
 
 .buttonStyleNotClicked:hover{
-    background-color: var(--backgroundColor);
-    color: var(--textColor);
+    box-shadow: var(--boxShadowStyleHover);
+}
+
+.buttonStyleNotClicked:active{
     box-shadow: var(--boxShadowStyleHover);
 }
 
@@ -101,18 +97,24 @@ body {
     padding-left: 2%;
     padding-right: 2%;
     margin-top: 1%; 
-    background-color: #e0e0e0; 
+    background-color: var(--backgroundColor) !important; 
     border-width: 0; 
-    color: var(--textColor); 
+    color: var(--textColor) !important; 
     box-shadow: var(--boxShadowStyle);
     border-radius: var(--borderRadius);
     font-weight: 600;
 }
 
 .buttonStyleNotClicked2:hover{
-    background-color: var(--backgroundColor);
-    color: var(--textColor);
     box-shadow: var(--boxShadowStyleHover);
+}
+
+.buttonStyleNotClicked2:focus{
+    box-shadow: var(--boxShadowStyle);
+}
+
+.buttonStyleNotClicked2:active{
+    box-shadow: var(--boxShadowStyleHover) !important;
 }
 
 .rowStyle {
