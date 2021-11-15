@@ -44,28 +44,26 @@ const MainPage = ({mountainNames, includeHeaders, title}) => {
         <div>
             {/* {gettingLocation && <ReactSpinner />} */}
             {includeHeaders &&
-            <Container 
-                className="buttonContainerStyle"
-            >
+            <Container className="buttonContainerStyle" >
                 
                 <Button 
                     onClick={()=>getUserLocation()} 
-                    style={sortByDist || gettingLocation ? buttonStyleClicked : buttonStyleNotClicked}
+                    className = {sortByDist || gettingLocation ? "buttonStyleClicked" : "buttonStyleNotClicked"}
                     disabled={gettingLocation}
-                    // variant= {sortByDist || gettingLocation ? "dark" : "light"}
                 >
                     {gettingLocation ? 'Loading…' : 'Sort by Distance'}
                 </Button>
                 <Button 
                     onClick={()=>setSortByDist(false)} 
-                    style={!sortByDist && !gettingLocation ? buttonStyleClicked : buttonStyleNotClicked}
+                    className = {sortByDist || gettingLocation ? "buttonStyleNotClicked" : "buttonStyleClicked"}
                     disabled={gettingLocation}
                 >
                     Sort by Name
                 </Button>
                 {window.innerWidth < window.innerHeight &&
                     <Button
-                        style = {Object.assign({}, buttonStyleNotClicked,{float: "right", paddingLeft: "3.5vmin", paddingRight: "3.5vmin", marginRight: 0})}
+                        className = "buttonStyleNotClicked2"
+                        style = {{float: "right", marginRight: 0}}
                         onClick={() => setShowInfo(true)}
                     >   
                         i
@@ -73,7 +71,8 @@ const MainPage = ({mountainNames, includeHeaders, title}) => {
                 }
                 {window.innerWidth >= window.innerHeight &&
                     <Button
-                        style = {Object.assign({}, buttonStyleNotClicked2,{float: "right", marginRight: 0})}
+                        className = "buttonStyleNotClicked2"
+                        style = {{float: "right", marginRight: 0}}
                         onClick={() => setShowInfo(true)}
                     >   
                         about
@@ -91,26 +90,23 @@ const MainPage = ({mountainNames, includeHeaders, title}) => {
             >
                 {mtnNames.map((mtn, i) => (
                     <Link to={"/"+mtn["name"]} style={{textDecoration: "none", color: "black"}}>
-                        <Card 
-                            className="customCard"
-                            style={cellStyle}
-                        >
-                            <Row md={3} lg={3} style={{margin: "1%", paddingLeft: "2%"}}>
-                                <Col xs={8} style={{padding: "0%"}}>
+                        <Card className="customCard">
+                            <Row md={3} lg={3} className="rowStyle">
+                                <Col xs={8} className="columnStyle">
                                     {mtn["display name"]}
                                 </Col>
-                                <Col style={{padding: "0%"}}>
+                                <Col className="columnStyle">
                                     {weatherData[mtn.name] && weatherData[mtn.name].temperature + "°F"}
                                 </Col>
                                 {window.innerWidth >= window.innerHeight &&
-                                    <Col style={{padding: "0%"}}>
+                                    <Col className="columnStyle">
                                         {weatherData[mtn.name] && weatherData[mtn.name].shortForecast}
                                     </Col>
                                 }
                             </Row>
                             {window.innerWidth < window.innerHeight &&
-                                <Row style={{marginLeft: "1%", paddingLeft: "2%"}}>
-                                    <Col style={{padding: "0%"}}>
+                                <Row className="rowStyleSmall">
+                                    <Col className="columnStyle">
                                         {weatherData[mtn.name] && weatherData[mtn.name].shortForecast}
                                     </Col>
                                 </Row>
@@ -241,67 +237,3 @@ const MainPage = ({mountainNames, includeHeaders, title}) => {
 }
 
 export default MainPage;
-
-const boxShadowStyle1 = "-4px 4px 11px #bebebe, 7px -7px 11px #ffffff";
-const boxShadowStyle2 = "-4px 4px 11px #bebebe, 4px -4px 11px #ffffff";
-const boxShadowStyleInset = "inset -7px 7px 10px #bebebe, inset 7px -7px 11px #ffffff";
-const boxShadowStyleInset2 = "inset -4px 4px 10px #bebebe, inset 4px -4px 11px #ffffff";
-const borderRadius1 = "10px";
-const textColor = "#606060";
-
-//style for the container which holds the buttons
-
-const buttonStyleNotClicked = {
-    paddingTop: "1%",
-    paddingBottom: "1%",
-    paddingLeft: "2%",
-    paddingRight: "2%",
-    marginTop: "1%", 
-    marginRight: "3vmin",
-    backgroundColor: "#e0e0e0", 
-    borderWidth: 0, 
-    color: textColor, 
-    boxShadow: boxShadowStyle2,
-    borderRadius: borderRadius1,
-    fontWeight: 600
-}
-
-const buttonStyleNotClicked2 = {
-    paddingTop: "1%",
-    paddingBottom: "1%",
-    paddingLeft: "2%",
-    paddingRight: "2%",
-    marginTop: "1%", 
-    backgroundColor: "#e0e0e0", 
-    borderWidth: 0, 
-    color: textColor, 
-    boxShadow: boxShadowStyle2,
-    borderRadius: borderRadius1,
-    fontWeight: 600
-}
-
-const buttonStyleClicked = {
-    paddingTop: "1%",
-    paddingBottom: "1%",
-    paddingLeft: "2%",
-    paddingRight: "2%",
-    marginTop: "1%", 
-    marginRight: "3vmin",
-    backgroundColor: "#e0e0e0", 
-    borderWidth: 0, 
-    color: textColor, 
-    boxShadow: boxShadowStyleInset,
-    borderRadius: borderRadius1,
-    fontWeight: 600
-}
-
-const cellStyle = {
-    color: textColor,
-    marginTop: "3vmin", 
-    marginBottom: "3vmin", 
-    borderWidth: 0, 
-    backgroundColor: "#e0e0e0", 
-    boxShadow: boxShadowStyle2,
-    borderRadius: borderRadius1
-}
-
