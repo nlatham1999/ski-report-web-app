@@ -1,9 +1,17 @@
 :root {
     --textColor: #606060;
+    /* --textColor: #0affef; */
+    /* --backgroundColor: #e6edf8; */
+    /* --shadowColorDark: #c4c9d3; */
     --backgroundColor: #e0e0e0;
-    --boxShadowStyle: -.6vmin .6vmin 1.9vmin #bebebe, .6vmin -.6vmin 1.9vmin #ffffff;
-    --boxShadowStyleInset: inset -.6vmin .6vmin 1.9vmin #bebebe, inset .6vmin -.6vmin 1.9vmin #ffffff;
-    --boxShadowStyleHover: -.8vmin .8vmin 1.9vmin #bebebe, .8vmin -.8vmin 1.9vmin #ffffff;
+    --shadowColorDark: #bebebe;
+    --shadowColorLight: #ffffff;
+    /* --backgroundColor: #3e4751;
+    --shadowColorDark: #353c45;
+    --shadowColorLight: #47525d; */
+    --boxShadowStyle: .6vmin .6vmin 1.8vmin var(--shadowColorDark), -.6vmin -.6vmin 1.8vmin var(--shadowColorLight);
+    --boxShadowStyleInset: inset .6vmin .6vmin 1.8vmin var(--shadowColorDark), inset -.6vmin -.6vmin 1.8vmin var(--shadowColorLight);
+    --boxShadowStyleHover: .8vmin .8vmin 1.8vmin var(--shadowColorDark), -.8vmin -.8vmin 1.8vmin var(--shadowColorLight);
     --borderRadius: 2vmin;
 
 }
