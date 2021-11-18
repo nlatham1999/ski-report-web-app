@@ -24,29 +24,29 @@ const MountainDetails = ({mountain, backLink}) => {
         <div styles={{backgroundColor: "#e0e0e0"}}>
             <Container style={{marginTop: "1%", backgroundColor: "transparent"}}>
                         
-                        <Card style={cellStyle2}>
-                            <Card.Header style={cardTopHeaderStyle}>
-                                <Link to={backLink} style={{textDecoration: "none", color: "black"}}>
-                                    <Button style={buttonStyleNotClicked}>
-                                        {"<"}
-                                    </Button>
-                                </Link>
-                                {mountain["display name"]}
-                            </Card.Header>
-                        </Card>
+                <Card className="CellStyle2">
+                    <Card.Header className="CardTopHeaderStyle">
+                        <Link to={backLink} style={{textDecoration: "none", color: "black"}}>
+                            <Button className="CardButtonStyleNotClicked">
+                                {"<"}
+                            </Button>
+                        </Link>
+                        {mountain["display name"]}
+                    </Card.Header>
+                </Card>
             </Container>
             <Container style={{marginTop: "1%"}}>
-                <Card style={cellStyle}>
-                    <Card.Header style={cardHeader}>
+                <Card className="CellStyle">
+                    <Card.Header className="CardHeader">
                         Forecast
                     </Card.Header>
                         < div
-                            className="horizontalScrollDisplay"
-                            style={cardBigInside}
+                            className="horizontalScrollDisplay BigCardInside"
+                            
                         >
                             {longerRange.map((forecast, i) => (
-                                    <Card style={cardStyle} className="customCard">
-                                        <Card.Header style={cardHeader}>
+                                    <Card className="CustomCard">
+                                        <Card.Header className="CardHeader">
                                             {forecast["name"]}
                                         </Card.Header>
                                         <Card.Body style={{height: "30%", whiteSpace: "pre-wrap"}}>
@@ -66,17 +66,16 @@ const MountainDetails = ({mountain, backLink}) => {
                 </Card>
             </Container>
             <Container style={{marginTop: "1%"}}>
-                <Card style={cellStyle}>
-                    <Card.Header style={cardHeader}>
+                <Card className="CellStyle">
+                    <Card.Header className="CardHeader">
                         Hourly Forecast
                     </Card.Header>
                         < div
-                            className="horizontalScrollDisplay"
-                            style={cardBigInside}
+                            className="horizontalScrollDisplay BigCardInside"
                         >
                             {hourly.map((forecast, i) => (
-                                    <Card style={cardStyle} className="customCard">
-                                        <Card.Header style={cardHeader}>
+                                    <Card className="CustomCard">
+                                        <Card.Header className="CardHeader">
                                             {getTime(forecast)}
                                         </Card.Header>
                                         <Card.Body style={{height: "30%", whiteSpace: "pre-wrap"}}>
@@ -142,97 +141,3 @@ const MountainDetails = ({mountain, backLink}) => {
 }
 
 export default MountainDetails;
-
-const boxShadowStyle1 = "-4px 4px 11px #bebebe, 4px -4px 11px #ffffff";
-const boxShadowStyle2 = "-4px 4px 11px #bebebe, 4px -4px 11px #ffffff";
-const boxShadowStyle2Inset = "inset -4px 4px 10px #bebebe, inset 4px -4px 11px #ffffff";
-const borderRadius1 = "10px";
-const textColor = "#606060";
-const backgroundColor1 = "#e0e0e0";
-
-const cellStyle = {
-    color: textColor,
-    marginTop: "3vmin", 
-    marginBottom: "3vmin", 
-    borderWidth: 0, 
-    backgroundColor: backgroundColor1, 
-    boxShadow: boxShadowStyle2,
-    borderRadius: borderRadius1
-}
-
-const cellStyle2 = {
-    color: textColor,
-    marginTop: "2vmin", 
-    borderWidth: 0, 
-    backgroundColor: backgroundColor1, 
-    boxShadow: boxShadowStyle2,
-    borderRadius: borderRadius1
-}
-
-const cellStyleInset = {
-    color: textColor,
-    marginTop: "1%", 
-    marginBottom: "1%", 
-    borderWidth: 0, 
-    backgroundColor: backgroundColor1, 
-    boxShadow: boxShadowStyle2Inset
-}
-
-const cardStyle = {
-    color: textColor,
-    display: "inline-block", 
-    width: "55vmin", 
-    marginLeft: "3vmin", 
-    marginTop: "3vmin", 
-    marginBottom: "3vmin", 
-    paddingTop: "0", 
-    top: "0",
-    borderWidth: 0, 
-    backgroundColor: backgroundColor1,
-    boxShadow: boxShadowStyle2,
-    borderRadius: borderRadius1
-}
-
-const cardBigInside = {
-    color: textColor,
-    overflowX: "scroll", 
-    scrollbarWidth: "none", 
-    overflowY: "hidden", 
-    whiteSpace: "nowrap", 
-    left: "0", 
-    right: "0", 
-    backgroundColor: backgroundColor1,
-    boxShadow: boxShadowStyle2Inset,
-    borderBottomLeftRadius: borderRadius1,
-    borderBottomRightRadius: borderRadius1
-}
-
-const cardHeader = {
-    color: textColor,
-    borderWidth: 0,
-    whiteSpace: "break-spaces", 
-    backgroundColor: backgroundColor1,
-    borderTopLeftRadius: borderRadius1, 
-    borderTopRightRadius: borderRadius1
-}
-
-const cardTopHeaderStyle = {
-    color: textColor,
-    borderWidth: 0,
-    backgroundColor: backgroundColor1,
-    borderRadius: borderRadius1
-}
-
-const buttonStyleNotClicked = {
-    paddingTop: "1%",
-    paddingBottom: "1%",
-    paddingLeft: "3%",
-    paddingRight: "3%", 
-    marginRight: "2%",
-    backgroundColor: "#e0e0e0",
-    borderWidth: 0, 
-    color: textColor, 
-    boxShadow: boxShadowStyle1,
-    borderRadius: borderRadius1,
-    fontWeight: 600
-}

@@ -86,7 +86,7 @@ body {
     background-color: var(--backgroundColor) !important; 
     border-width: 0 !important; 
     color: var(--textColor) !important;
-    box-shadow: var(--boxShadowStyle);
+    box-shadow: var(--boxShadowStyle) !important;
     border-radius: var(--borderRadius);
     font-weight: 600;
 }
@@ -137,4 +137,9 @@ body {
 
 .columnStyle {
     padding: 0%;
+}
+
+.ModalStyle .modal-content {
+    background-color: var(--backgroundColor);
+    color: var(--textColor);
 }

@@ -2,7 +2,23 @@ body {
   background-color:var(--backgroundColor);
 }
 
-.customCard:hover {
+.CustomCard {
+
+  color: var(--textColor);
+  display: inline-block; 
+  width: 55vmin; 
+  margin-left: 3vmin; 
+  margin-top: 3vmin; 
+  margin-bottom: 3vmin; 
+  padding-top: 0; 
+  top: 0;
+  border-width: 0; 
+  background-color: var(--backgroundColor);
+  box-shadow: var(--boxShadowStyle);
+  border-radius: var(--borderRadius);
+}
+
+.CustomCard:hover {
   /* background-color: rgb(228, 226, 226) !important; */
   /* box-shadow: -4px 4px 8px #5a5a5a, 4px -4px 8px #ffffff !important */
 }
@@ -16,4 +32,68 @@ body {
 .horizontalScrollDisplay {
 -ms-overflow-style: none;  /* IE and Edge */
 scrollbar-width: none;  /* Firefox */
+}
+
+.CellStyle {
+  color: var(--textColor);
+  margin-top: 3vmin; 
+  margin-bottom: 3vmin; 
+  border-width: 0; 
+  background-color: var(--backgroundColor); 
+  box-shadow: var(--boxShadowStyle);
+  border-radius: var(--borderRadius);
+}
+
+.CellStyle2 {
+  color: var(--textColor);
+  margin-top: 2vmin; 
+  border-width: 0; 
+  background-color: var(--backgroundColor); 
+  box-shadow: var(--boxShadowStyle);
+  border-radius: var(--borderRadius);
+}
+
+
+.BigCardInside {
+  color: var(--textColor);
+  overflow-x: scroll; 
+  scrollbar-width: none; 
+  overflow-y: hidden;
+  white-space: nowrap; 
+  left: 0; 
+  right: 0; 
+  background-color: var(--backgroundColor);
+  box-shadow: var(--boxShadowStyleInset);
+  border-bottom-left-radius: var(--borderRadius);
+  border-bottom-right-radius: var(--borderRadius);
+}
+
+.CardHeader {
+  color: var(--textColor);
+  border-width: 0;
+  white-space: normal;
+  background-color: var(--backgroundColor);
+  border-top-left-radius: var(--borderRadius) !important;
+  border-top-right-radius: var(--borderRadius) !important;
+}
+
+.CardTopHeaderStyle {
+  color: var(--textColor);
+  border-width: 0;
+  background-color: var(--backgroundColor);
+  border-radius: var(--borderRadius) !important;
+}
+
+.CardButtonStyleNotClicked {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 3%;
+  padding-right: 3%; 
+  margin-right: 2%;
+  background-color: var(--backgroundColor) !important;
+  border-width: 0; 
+  color: var(--textColor) !important; 
+  box-shadow: var(--boxShadowStyle) !important;
+  border-radius: var(--borderRadius);
+  font-weight: 600;
 }

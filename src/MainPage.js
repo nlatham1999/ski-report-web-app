@@ -115,12 +115,12 @@ const MainPage = ({mountainNames, includeHeaders, title}) => {
                     </Link>
                 ))}
             </Container>
-            <Modal show={showInfo} onHide={() => setShowInfo(false)} centered>
+            <Modal show={showInfo} onHide={() => setShowInfo(false)} centered className="ModalStyle">
                 <Modal.Header closeButton>
                     <Modal.Title>Ski Weather App</Modal.Title>
                 </Modal.Header>
 
-                <Modal.Body>
+                <Modal.Body >
                     <h>Creator: <a href="https://nicholaslatham.com">Nick Latham</a></h>
                     <p>The design style of this app is <a href="https://www.justinmind.com/blog/neumorphism-ui/">Neumorphism</a> <br></br> 
                         Data is gathered using the <a href="https://www.weather.gov/documentation/services-web-api">NOAA weather API</a><br></br>
