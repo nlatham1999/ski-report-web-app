@@ -128,8 +128,7 @@ const MainPage = ({mountainNames, includeHeaders, title}) => {
                     <a 
                         class="bmc-button bmcButton" 
                         href="https://www.buymeacoffee.com/nicklatham" 
-                        target="_blank" 
-                        onclick="return getOutboundLink(&quot;https://www.buymeacoffee.com/nicklatham&quot;),!0">
+                        target="_blank" >
                             <img alt="Buy me a coffee" src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" />
                             <span>Buy me a coffee</span>
                     </a>
