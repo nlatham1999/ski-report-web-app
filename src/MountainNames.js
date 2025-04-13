@@ -1,5 +1,3 @@
-import React, {useState, useEffect} from 'react';
-
 function mountainNames () {
     return [
         {"name": "lookout", "lat": 47.45611828584227, "lng": -115.69710169853091, "display name": "Lookout Pass", "state": "ID"},
