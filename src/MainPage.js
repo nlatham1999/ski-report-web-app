@@ -214,7 +214,7 @@ const MainPage = ({mountainNames, includeHeaders, title}) => {
     }
 }
 
-function getWeatherOfEach(mtn){
+function getWeatherOfEach(mtn, weatherData, setWeatherData){
     var url = "https://api.weather.gov/points/" + mtn["lat"] + "," + mtn["lng"];
     // console.log(mtn.name)
     axios
