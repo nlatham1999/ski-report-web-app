@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
-import { Container, Col, Row, Card, Button } from 'react-bootstrap';
+import { Container, Card, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import backButton from "./back.png";
 import { Link} from 'react-router-dom';
 
 
@@ -14,10 +13,26 @@ const MountainDetails = ({mountain, backLink}) => {
 
     const [longerRange, setLongerRange] = useState([]);
     const [hourly, setHourly] = useState([]);
+        
+    const getWeather = useCallback(() => {
+        const url = `https://api.weather.gov/points/${mountain.lat},${mountain.lng}`;
+
+        axios.get(url, { responseType: 'json' })
+            .then(res => {
+                axios.get(res.data.properties.forecast, { responseType: 'json' })
+                    .then(res2 => {
+                        setLongerRange(res2.data.properties.periods);
+                    });
+                axios.get(res.data.properties.forecastHourly, { responseType: 'json' })
+                    .then(res2 => {
+                        setHourly(res2.data.properties.periods);
+                    });
+            });
+    }, [mountain]);
 
     useEffect(() => {
         getWeather();
-      }, [])
+    }, [getWeather]);
 
     return (
 
@@ -99,29 +114,6 @@ const MountainDetails = ({mountain, backLink}) => {
         </div>
     );
 
-    function getWeather(){
-        var url = "https://api.weather.gov/points/" + mountain["lat"] + "," + mountain["lng"];
-
-        axios
-            .get(url, {
-                responseType: 'json',
-            })
-            .then(response => {
-                axios.get(response.data.properties.forecast, {
-                    responseType: 'json',
-                })
-                .then(response2 =>{
-                    setLongerRange(response2.data.properties.periods);
-                })
-                axios.get(response.data.properties.forecastHourly, {
-                    responseType: 'json',
-                })
-                .then(response2 =>{
-                    setHourly(response2.data.properties.periods);
-                })
-            })
-    }
-
     function getTime(forecast){
         var d = new Date(forecast["startTime"]);
         console.log(d.toString())
@@ -131,7 +123,7 @@ const MountainDetails = ({mountain, backLink}) => {
             if(index < 5){
                 dateString += dateStringArr[index] + " ";
             }
-            if(index == 4){
+            if(index === 4){
                 dateString += "\n";
             }
             

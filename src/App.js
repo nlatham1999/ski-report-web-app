@@ -1,7 +1,6 @@
 import './App.css';
 import MountainDetails from './MountainDetails';
-import { NavLink, Switch, Route, BrowserRouter } from 'react-router-dom';
-import axios from "axios";
+import {Switch, Route, BrowserRouter } from 'react-router-dom';
 import MainPage from './MainPage';
 import mountainNames from './MountainNames';
 import hikingTripNames from './HikingTripNames';

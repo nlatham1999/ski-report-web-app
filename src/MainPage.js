@@ -2,15 +2,12 @@ import React, {useState, useEffect} from 'react';
 import axios from "axios";
 import './MainPage.css'
 
-import {ReactSpinner} from 'react-spinning-wheel';
 import 'react-spinning-wheel/dist/style.css';
 
 import { Link} from 'react-router-dom';
 
 import {Button, Card, Form, Row, Container, Col, Modal } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import mountainNames from './MountainNames';
 
 
 const MainPage = ({mountainNames, includeHeaders, title}) => {
@@ -20,7 +17,7 @@ const MainPage = ({mountainNames, includeHeaders, title}) => {
     const [sortByDist, setSortByDist] = useState(false);
     const [gettingLocation, setGettingLocation] = useState(false);
     const [weatherData, setWeatherData] = useState({});
-    const [refresh, setRefresh] = useState(false);
+    // const [refresh, setRefresh] = useState(false);
     const [showInfo, setShowInfo] = useState(false);
 
     
@@ -29,10 +26,14 @@ const MainPage = ({mountainNames, includeHeaders, title}) => {
         timeout: 5000,
         maximumAge: 0,
     };
+
+    const getWeather = useCallback(() => {
+        mtnNames.forEach((mtn) => getWeatherOfEach(mtn));
+    }, [mtnNames]);
     
     useEffect(() => {
         getWeather();
-    }, [])
+    }, [getWeather]);
 
     if(sortByDist){
         sortByDistance();
@@ -126,6 +127,7 @@ const MainPage = ({mountainNames, includeHeaders, title}) => {
                         Data is gathered using the <a href="https://www.weather.gov/documentation/services-web-api">NOAA weather API</a><br></br>
                         Made with React and hosted on AWS Amplify <br></br></p>
                     <a 
+                        rel="noreferrer"
                         class="bmc-button bmcButton" 
                         href="https://www.buymeacoffee.com/nicklatham" 
                         target="_blank" 
@@ -141,11 +143,20 @@ const MainPage = ({mountainNames, includeHeaders, title}) => {
     );
 
     function sortByName() {
-        mtnNames.sort((a, b) => (a["display name"] > b["display name"]) ? 1 : -1)
+        const sorted = [...mtnNames].sort((a, b) =>
+            a["display name"] > b["display name"] ? 1 : -1
+        );
+        setMtnNames(sorted);
     }
-
-    function sortByDistance(){
-        mtnNames.sort((a, b) => (haversineFormula(a.lat, a.lng, userLocation.lat, userLocation.lng) > haversineFormula(b.lat, b.lng, userLocation.lat, userLocation.lng)) ? 1 : -1)
+    
+    function sortByDistance() {
+        const sorted = [...mtnNames].sort((a, b) =>
+            haversineFormula(a.lat, a.lng, userLocation.lat, userLocation.lng) >
+            haversineFormula(b.lat, b.lng, userLocation.lat, userLocation.lng)
+                ? 1
+                : -1
+        );
+        setMtnNames(sorted);
     }
 
     function getUserLocation(){
@@ -192,8 +203,7 @@ const MainPage = ({mountainNames, includeHeaders, title}) => {
         // console.log(`Longitude: ${crd.longitude}`);
         // console.log(`More or less ${crd.accuracy} meters.`);
 
-        userLocation.lat = crd.latitude;
-        userLocation.lng = crd.longitude;
+        setUserLocation({ lat: crd.latitude, lng: crd.longitude });
         setSortByDist(true);
         setGettingLocation(false);
     }
@@ -203,11 +213,6 @@ const MainPage = ({mountainNames, includeHeaders, title}) => {
         // console.warn(`ERROR(${err.code}): ${err.message}`);
     }
 
-    function getWeather(){
-        mtnNames.map((mtn, i) => (
-            getWeatherOfEach(mtn)    
-        ));
-    }
 
     function getWeatherOfEach(mtn){
         var url = "https://api.weather.gov/points/" + mtn["lat"] + "," + mtn["lng"];
@@ -228,8 +233,8 @@ const MainPage = ({mountainNames, includeHeaders, title}) => {
                     var data2 = weatherData;
                     data2[mtn.name] = data;
                     setWeatherData(data2);
-                    setRefresh(true);
-                    setRefresh(false);
+                    // setRefresh(true);
+                    // setRefresh(false);
 
                 })
         })
