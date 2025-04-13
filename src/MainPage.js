@@ -6,7 +6,7 @@ import 'react-spinning-wheel/dist/style.css';
 
 import { Link} from 'react-router-dom';
 
-import {Button, Card, Form, Row, Container, Col, Modal } from 'react-bootstrap'
+import {Button, Card, Row, Container, Col, Modal } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -28,8 +28,8 @@ const MainPage = ({mountainNames, includeHeaders, title}) => {
     };
 
     const getWeather = useCallback(() => {
-        mtnNames.forEach((mtn) => getWeatherOfEach(mtn));
-    }, [mtnNames]);
+        mtnNames.forEach((mtn) => getWeatherOfEach(mtn, weatherData, setWeatherData));
+      }, [mtnNames, weatherData]);
     
     useEffect(() => {
         getWeather();
@@ -212,33 +212,32 @@ const MainPage = ({mountainNames, includeHeaders, title}) => {
         setGettingLocation(false);
         // console.warn(`ERROR(${err.code}): ${err.message}`);
     }
+}
 
-
-    function getWeatherOfEach(mtn){
-        var url = "https://api.weather.gov/points/" + mtn["lat"] + "," + mtn["lng"];
-        // console.log(mtn.name)
-        axios
-            .get(url, {
+function getWeatherOfEach(mtn){
+    var url = "https://api.weather.gov/points/" + mtn["lat"] + "," + mtn["lng"];
+    // console.log(mtn.name)
+    axios
+        .get(url, {
+            responseType: 'json',
+        })
+        .then(response => {
+            axios.get(response.data.properties.forecastHourly, {
                 responseType: 'json',
             })
-            .then(response => {
-                axios.get(response.data.properties.forecastHourly, {
-                    responseType: 'json',
-                })
-                .then(response2 =>{
-                    var data = {}
-                    data["temperature"] = response2.data.properties.periods[0].temperature;
-                    data["shortForecast"] = response2.data.properties.periods[0].shortForecast;
-                    // console.log(data.temperature)
-                    var data2 = weatherData;
-                    data2[mtn.name] = data;
-                    setWeatherData(data2);
-                    // setRefresh(true);
-                    // setRefresh(false);
+            .then(response2 =>{
+                var data = {}
+                data["temperature"] = response2.data.properties.periods[0].temperature;
+                data["shortForecast"] = response2.data.properties.periods[0].shortForecast;
+                // console.log(data.temperature)
+                var data2 = weatherData;
+                data2[mtn.name] = data;
+                setWeatherData(data2);
+                // setRefresh(true);
+                // setRefresh(false);
 
-                })
-        })
-    }
+            })
+    })
 }
 
 export default MainPage;
